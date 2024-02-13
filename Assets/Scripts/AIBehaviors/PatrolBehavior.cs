@@ -2,29 +2,29 @@ using UnityEngine;
 
 public class PatrolBehavior : StateMachineBehaviour
 {
-    [SerializeField] private float _patrolTime = 0.0f;
     [SerializeField] private float _visionRange = 0.0f;
-    [SerializeField] private Transform _target;
 
-    private float _timer;
+    private Transform _target;
+    private PathFollower _pathFollower;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _timer = 0.0f;
+        _target = GameObject.FindGameObjectWithTag("Player").transform;
+        _pathFollower = animator.GetComponent<PathFollower>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (_pathFollower.ArrivedAtWP())
+        {
+            animator.SetBool("_isPatrolling", false);
+            _pathFollower.NextWP();
+        }
         animator.SetBool("_isChasing", IsPlayerClose(animator.transform));
-        animator.SetBool("_isPatrolling", !IsTimeUp());
-    }
 
-    private bool IsTimeUp()
-    {
-        _timer += Time.deltaTime;
-        return (_timer > _patrolTime);
+        _pathFollower.Move();
     }
 
     private bool IsPlayerClose(Transform transform)
