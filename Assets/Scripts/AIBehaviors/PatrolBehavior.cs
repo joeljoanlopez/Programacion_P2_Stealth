@@ -17,14 +17,16 @@ public class PatrolBehavior : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (_pathFollower.ArrivedAtWP())
-        {
-            animator.SetBool("_isPatrolling", false);
-            _pathFollower.NextWP();
-        }
-        animator.SetBool("_isChasing", IsPlayerClose(animator.transform));
-
         _pathFollower.Move();
+
+        animator.SetBool("_isPatrolling", !_pathFollower.ArrivedAtWP());
+        animator.SetBool("_isChasing", IsPlayerClose(animator.transform));
+    }
+
+    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        _pathFollower.NextWP();
     }
 
     private bool IsPlayerClose(Transform transform)
@@ -32,12 +34,6 @@ public class PatrolBehavior : StateMachineBehaviour
         var dist = Vector3.Distance(transform.position, _target.position);
         return (dist < _visionRange);
     }
-
-    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //
-    //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

@@ -8,7 +8,6 @@ public class PathFollower : MonoBehaviour
 
     private Transform _currentWP;
     private bool _moving;
-    private float _moveDirection;
 
     // Start is called before the first frame update
     private void Start()
@@ -28,19 +27,24 @@ public class PathFollower : MonoBehaviour
         }
     }
 
-    public void Move()
-    {
-        _moving = true;
-    }
-
     public void NextWP()
     {
+        StopMove();
         _currentWP = _waypoints.GetNextWP(_currentWP);
-        _moving = false;
     }
 
     public bool ArrivedAtWP()
     {
         return Vector2.Distance(transform.position, _currentWP.position) < _distChange;
+    }
+
+    public void Move()
+    {
+        _moving = true;
+    }
+
+    public void StopMove()
+    {
+        _moving = false;
     }
 }
