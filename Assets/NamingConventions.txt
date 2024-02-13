@@ -1,0 +1,7 @@
+[Carpetas y archivos]
+Carpetas: PascalCase
+Archivos: PascalCase
+
+[Código]
+Variables: _[camelCase]
+Funciones: PascalCase
