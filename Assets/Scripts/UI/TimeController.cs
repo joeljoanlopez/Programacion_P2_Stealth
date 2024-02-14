@@ -6,16 +6,26 @@ using UnityEngine;
 public class TimeController : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float _timer, _minutes, _seconds;
+    [SerializeField] private float _timer, _minutes, _seconds;
+    static float _globalTimer;
     private string _timerText;
-
+    [SerializeField] private bool _show;
     private void OnGUI()
     {
-        GUI.Label(new Rect(750, 10, 200, 20), _timerText);
+        if (_show)
+        {
+            GUI.Label(new Rect(750, 10, 200, 20), _timerText);
+
+        }
+        else
+        {
+
+        }
     }
     // Update is called once per frame
     void Update()
     {
+        _globalTimer = _globalTimer + Time.deltaTime;
         _timer = _timer + Time.deltaTime;
         if(_timer >= 1)
         {
@@ -37,5 +47,9 @@ public class TimeController : MonoBehaviour
             _timerText = ("Current Time: ") + _minutes.ToString() + (":0") + _seconds.ToString();
 
         }
+    }
+    public float FinalTime()
+    {
+        return _globalTimer;
     }
 }

@@ -6,16 +6,16 @@ public class PlayerMovement : MonoBehaviour
 {
     private PlayerInput _playerInput;
     private float _stepTimer;
+    private Vector2 _lastPosition;
     [SerializeField] private float _speed = 5.0f;
     [SerializeField] private StepController _stepController;
 
-    // Start is called before the first frame update
     private void Start()
     {
         _playerInput = GetComponent<PlayerInput>();
+        _lastPosition = transform.position;
     }
 
-    // Update is called once per frame
     private void Update()
     {
         Vector2 direction = new Vector2(_playerInput._movementHorizontal, _playerInput._movementVertical).normalized * _speed * Time.deltaTime;
@@ -23,10 +23,19 @@ public class PlayerMovement : MonoBehaviour
         {
             _stepTimer = _stepTimer + Time.deltaTime;
         }
-        if(_stepTimer >= 0.2)
+        //if(_stepTimer >= 0.2)
+        //{
+          //  _stepController.IncreaseSteps();
+        //    _stepTimer = 0;
+       // }
+        float distanciaRecorrida = Vector2.Distance(_lastPosition, transform.position);
+
+        if (distanciaRecorrida > 0.5f)
         {
             _stepController.IncreaseSteps();
-            _stepTimer = 0;
+
+            _lastPosition = transform.position;
+
         }
             transform.Translate(direction);
     }

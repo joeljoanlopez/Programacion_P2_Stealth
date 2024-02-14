@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class StepController : MonoBehaviour
 {
-    public float _steps = 0;
+    static float _steps = 0;
     private string _stepsText;
-    
+    [SerializeField] private bool _show;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +16,15 @@ public class StepController : MonoBehaviour
     // Update is called once per frame
     private void OnGUI()
     {
-        GUI.Label(new Rect(10, 10, 200, 20), _stepsText);
+        if (_show)
+        {
+            GUI.Label(new Rect(10, 10, 200, 20), _stepsText);
+
+        }
+        else
+        {
+
+        }
     }
     void Update()
     {
@@ -25,6 +33,10 @@ public class StepController : MonoBehaviour
     public void IncreaseSteps()
     {
         _steps = _steps + 1;
+    }
+    public float FinalSteps()
+    {
+        return _steps;
     }
 
 
