@@ -3,13 +3,15 @@ using UnityEngine;
 public class ChaseBehavior : StateMachineBehaviour
 {
     [SerializeField] private float _speed = 0.0f;
-    [SerializeField] private float _visionRange = 0.0f;
 
+    private float _visionRange;
+    private float _visionAngle;
     private Transform _target;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        _visionRange = animator.GetComponent<VisionDetector>().VisionRange;
         _target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -24,8 +26,10 @@ public class ChaseBehavior : StateMachineBehaviour
 
     private bool IsPlayerClose(Transform transform)
     {
+        bool _isPlayerSeen = false;
         var dist = Vector3.Distance(transform.position, _target.position);
-        return (dist < _visionRange);
+
+        return _isPlayerSeen;
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

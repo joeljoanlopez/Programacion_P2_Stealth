@@ -3,7 +3,10 @@ using UnityEngine;
 public class IdleBehavior : StateMachineBehaviour
 {
     [SerializeField] private float _idleTime = 0.0f;
-    [SerializeField] private float _visionRange = 0.0f;
+    [SerializeField] private float _visionRange;
+
+    public float VisionRange
+    { get { return _visionRange; } }
 
     private Transform _target;
     private float _timer;
@@ -11,6 +14,7 @@ public class IdleBehavior : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        _visionRange = animator.GetComponent<VisionDetector>().VisionRange;
         _target = GameObject.FindGameObjectWithTag("Player").transform;
         _timer = 0.0f;
     }

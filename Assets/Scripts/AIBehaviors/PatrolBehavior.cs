@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class PatrolBehavior : StateMachineBehaviour
 {
-    [SerializeField] private float _visionRange = 0.0f;
-
+    private float _visionRange;
+    private float _visionAngle;
     private Transform _target;
     private PathFollower _pathFollower;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        _visionRange = animator.GetComponent<VisionDetector>().VisionRange;
         _target = GameObject.FindGameObjectWithTag("Player").transform;
         _pathFollower = animator.GetComponent<PathFollower>();
     }
