@@ -11,7 +11,7 @@ public class TimeController : MonoBehaviour
 
     private void OnGUI()
     {
-        GUI.Label(new Rect(10, 10, 200, 20), _timerText);
+        GUI.Label(new Rect(750, 10, 200, 20), _timerText);
     }
     // Update is called once per frame
     void Update()
