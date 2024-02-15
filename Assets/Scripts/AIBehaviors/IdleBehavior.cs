@@ -17,7 +17,7 @@ public class IdleBehavior : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("_isChasing", _visionDetector.IsTargetInAngle() && _visionDetector.IsTargetClose());
+        animator.SetBool("_isChasing", _visionDetector.IsTargetClose() && _visionDetector.IsTargetInAngle());
         animator.SetBool("_isPatrolling", IsTimeUp());
     }
 
