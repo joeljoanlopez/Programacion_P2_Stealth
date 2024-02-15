@@ -4,8 +4,11 @@ public class VisionDetector : MonoBehaviour
 {
     [SerializeField] private float _visionRange;
     [SerializeField] private float _visionAngle;
+    [SerializeField] private LayerMask _visibleLayers;
     [SerializeField] private Transform _target;
     private Vector3 _forward;
+    private Vector3 _targetDirection;
+    private RaycastHit2D _hit;
 
     private PathFollower _pathFollower;
 
@@ -29,12 +32,13 @@ public class VisionDetector : MonoBehaviour
     private void Update()
     {
         _forward = Vector3.Normalize(_pathFollower.CurrentWP.position - transform.position);
+        _targetDirection = _target.position - transform.position;
     }
 
     public bool IsTargetClose()
     {
         var dist = Vector3.Distance(transform.position, _target.position);
-        return (dist < _visionRange);
+        return (dist < _visionRange) && IsTargetSeeable();
     }
 
     public bool IsTargetInAngle()
@@ -45,8 +49,19 @@ public class VisionDetector : MonoBehaviour
 
     private float GetAngle()
     {
-        Vector2 _targetDirection = _target.position - transform.position;
         float angle = Vector2.Angle(_forward, _targetDirection);
         return angle;
+    }
+
+    private bool IsTargetSeeable()
+    {
+        _hit = Physics2D.Raycast(
+            transform.position,
+            _targetDirection,
+            _visionRange,
+            _visibleLayers
+            );
+        Debug.DrawRay(transform.position, _targetDirection, Color.yellow);
+        return (_hit.collider.transform == _target);
     }
 }
