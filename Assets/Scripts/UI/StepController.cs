@@ -6,7 +6,7 @@ public class StepController : MonoBehaviour
 {
     public float _steps = 0;
     private string _stepsText;
-    
+    [SerializeField] bool _UIEnabled;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +16,10 @@ public class StepController : MonoBehaviour
     // Update is called once per frame
     private void OnGUI()
     {
-        GUI.Label(new Rect(10, 10, 200, 20), _stepsText);
+        if (_UIEnabled)
+        {
+            GUI.Label(new Rect(10, 10, 200, 20), _stepsText);
+        }
     }
     void Update()
     {
@@ -26,6 +29,9 @@ public class StepController : MonoBehaviour
     {
         _steps = _steps + 1;
     }
-
+    public float ReturnSteps()
+    {
+        return _steps;
+    }
 
 }

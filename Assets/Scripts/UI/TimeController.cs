@@ -8,15 +8,21 @@ public class TimeController : MonoBehaviour
     // Start is called before the first frame update
     public float _timer, _minutes, _seconds;
     private string _timerText;
+    private float _globalTimer;
+    [SerializeField] bool _UIEnabled;
 
     private void OnGUI()
     {
-        GUI.Label(new Rect(750, 10, 200, 20), _timerText);
+        if (_UIEnabled)
+        {
+            GUI.Label(new Rect(750, 10, 200, 20), _timerText);
+        }
     }
     // Update is called once per frame
     void Update()
     {
         _timer = _timer + Time.deltaTime;
+        _globalTimer = _globalTimer + Time.deltaTime;
         if(_timer >= 1)
         {
             _seconds = _seconds + 1;
@@ -37,5 +43,9 @@ public class TimeController : MonoBehaviour
             _timerText = ("Current Time: ") + _minutes.ToString() + (":0") + _seconds.ToString();
 
         }
+    }
+    public float ReturnTime()
+    {
+        return _globalTimer;
     }
 }
