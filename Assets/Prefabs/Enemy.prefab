@@ -139,6 +139,7 @@ MonoBehaviour:
   _visionRange: 10
   _visionAngle: 90
   _target: {fileID: 3223576509107467159, guid: 43c798341d00b184b8146957c92cc721, type: 3}
+  _inAngle: 0
 --- !u!114 &2506165532984372955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +147,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7907691258368117905}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0663f4a7a7beb8848a0c3f2d27af2334, type: 3}
   m_Name: 

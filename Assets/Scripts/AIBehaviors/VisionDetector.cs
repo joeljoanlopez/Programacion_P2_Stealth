@@ -8,6 +8,8 @@ public class VisionDetector : MonoBehaviour
     [SerializeField] private float _visionAngle;
     [SerializeField] private Transform _target;
 
+    [SerializeField] private bool _inAngle;
+
     public float VisionRange
     { get { return _visionRange; } }
 
@@ -23,7 +25,6 @@ public class VisionDetector : MonoBehaviour
         return (dist < _visionRange);
     }
 
-    [SerializeField]
     public bool IsTargetInAngle(Transform target)
     {
         var angle = GetAngle(target);

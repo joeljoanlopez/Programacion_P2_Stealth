@@ -6,20 +6,22 @@ public class ScoreController : MonoBehaviour
 {
     // Start is called before the first frame update
     private float _maxScore = 100000;
+
     private float _finalScore = 0;
     private string _grade;
-    [SerializeField] private StepController _stepController;
+    [SerializeField] private StepHandler _stepHandler;
     [SerializeField] private TimeController _timeController;
-    void Start()
+
+    private void Start()
     {
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        _finalScore = _maxScore - _stepController.ReturnSteps() * _timeController.ReturnTime();
+        _finalScore = _maxScore - _stepHandler.ReturnSteps() * _timeController.ReturnTime();
 
-        if (_finalScore<= 0)
+        if (_finalScore <= 0)
         {
             _finalScore = 0;
             _grade = ("F");
@@ -32,7 +34,7 @@ public class ScoreController : MonoBehaviour
         {
             _grade = ("C");
         }
-        if (_finalScore<= 30000)
+        if (_finalScore <= 30000)
         {
             _grade = ("B");
         }
@@ -45,8 +47,9 @@ public class ScoreController : MonoBehaviour
             _grade = ("S");
         }
     }
+
     private void OnGUI()
     {
-        GUI.Label(new Rect(10, 10, 200, 20),("Grade: ") + _grade + ("   Score: ") + _finalScore);
+        GUI.Label(new Rect(10, 10, 200, 20), ("Grade: ") + _grade + ("   Score: ") + _finalScore);
     }
 }

@@ -15,7 +15,7 @@ public class ChaseBehavior : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("_isChasing", _visionDetector.IsTargetClose(animator.transform));
+        animator.SetBool("_isChasing", _visionDetector.IsTargetInAngle(animator.transform));
 
         Vector2 _dir = _visionDetector.Target.position - animator.transform.position;
         animator.transform.position += (Vector3)_dir.normalized * _speed * Time.deltaTime;
