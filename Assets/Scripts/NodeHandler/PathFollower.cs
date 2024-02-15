@@ -16,6 +16,7 @@ public class PathFollower : MonoBehaviour
         //Set initial position
         _currentWP = _waypoints.GetNextWP(_currentWP);
         transform.position = _currentWP.position;
+        _currentWP = _waypoints.GetNextWP(_currentWP);
     }
 
     // Update is called once per frame

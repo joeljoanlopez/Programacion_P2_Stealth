@@ -2,16 +2,13 @@ using UnityEngine;
 
 public class PatrolBehavior : StateMachineBehaviour
 {
-    private float _visionRange;
-    private float _visionAngle;
-    private Transform _target;
+    private VisionDetector _visionDetector;
     private PathFollower _pathFollower;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _visionRange = animator.GetComponent<VisionDetector>().VisionRange;
-        _target = GameObject.FindGameObjectWithTag("Player").transform;
+        _visionDetector = animator.GetComponent<VisionDetector>();
         _pathFollower = animator.GetComponent<PathFollower>();
     }
 
@@ -21,19 +18,13 @@ public class PatrolBehavior : StateMachineBehaviour
         _pathFollower.Move();
 
         animator.SetBool("_isPatrolling", !_pathFollower.ArrivedAtWP());
-        animator.SetBool("_isChasing", IsPlayerClose(animator.transform));
+        animator.SetBool("_isChasing", _visionDetector.IsPlayerClose(animator.transform));
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _pathFollower.NextWP();
-    }
-
-    private bool IsPlayerClose(Transform transform)
-    {
-        var dist = Vector3.Distance(transform.position, _target.position);
-        return (dist < _visionRange);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

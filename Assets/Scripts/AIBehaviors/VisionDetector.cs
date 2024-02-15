@@ -6,6 +6,7 @@ public class VisionDetector : MonoBehaviour
 {
     [SerializeField] private float _visionRange;
     [SerializeField] private float _visionAngle;
+    [SerializeField] private Transform _target;
 
     public float VisionRange
     { get { return _visionRange; } }
@@ -13,7 +14,8 @@ public class VisionDetector : MonoBehaviour
     public float VisionAngle
     { get { return _visionAngle; } }
 
-    private Transform _target;
+    public Transform Target
+    { get { return _target; } }
 
     public bool IsPlayerClose(Transform transform)
     {

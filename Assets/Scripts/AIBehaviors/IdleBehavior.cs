@@ -3,26 +3,21 @@ using UnityEngine;
 public class IdleBehavior : StateMachineBehaviour
 {
     [SerializeField] private float _idleTime = 0.0f;
-    [SerializeField] private float _visionRange;
 
-    public float VisionRange
-    { get { return _visionRange; } }
-
-    private Transform _target;
+    private VisionDetector _visionDetector;
     private float _timer;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _visionRange = animator.GetComponent<VisionDetector>().VisionRange;
-        _target = GameObject.FindGameObjectWithTag("Player").transform;
+        _visionDetector = animator.GetComponent<VisionDetector>();
         _timer = 0.0f;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("_isChasing", IsPlayerClose(animator.transform));
+        animator.SetBool("_isChasing", _visionDetector.IsPlayerClose(animator.transform));
         animator.SetBool("_isPatrolling", IsTimeUp());
     }
 
@@ -30,12 +25,6 @@ public class IdleBehavior : StateMachineBehaviour
     {
         _timer += Time.deltaTime;
         return _timer > _idleTime;
-    }
-
-    private bool IsPlayerClose(Transform transform)
-    {
-        var dist = Vector3.Distance(transform.position, _target.position);
-        return (dist < _visionRange);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
