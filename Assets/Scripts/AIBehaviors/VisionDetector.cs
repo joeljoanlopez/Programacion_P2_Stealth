@@ -8,7 +8,6 @@ public class VisionDetector : MonoBehaviour
     [SerializeField] private Transform _target;
     private Vector3 _forward;
     private Vector3 _targetDirection;
-    private RaycastHit2D _hit;
 
     private PathFollower _pathFollower;
 
@@ -55,13 +54,14 @@ public class VisionDetector : MonoBehaviour
 
     private bool IsTargetSeeable()
     {
-        _hit = Physics2D.Raycast(
-            transform.position,
-            _targetDirection,
-            _visionRange,
-            _visibleLayers
-            );
+        //return Physics2D.Linecast(transform.position, _target.position);
+        //Physics.Raycast(transform.position, _targetDirection, out _hit, _visionRange);
         Debug.DrawRay(transform.position, _targetDirection, Color.yellow);
-        return (_hit.collider.transform == _target);
+        RaycastHit _hit;
+        if (Physics.Linecast(transform.position, _target.position, out _hit))
+        {
+            return _hit.collider.transform == _target;
+        }
+        return false;
     }
 }
