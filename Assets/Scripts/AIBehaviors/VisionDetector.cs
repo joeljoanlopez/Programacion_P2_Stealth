@@ -38,7 +38,6 @@ public class VisionDetector : MonoBehaviour
     {
         var dist = Vector3.Distance(transform.position, _target.position);
         return (dist < _visionRange) && IsTargetSeeable();
-        //return (dist < _visionRange);
     }
 
     public bool IsTargetInAngle()
@@ -58,10 +57,6 @@ public class VisionDetector : MonoBehaviour
         Debug.DrawRay(transform.position, _targetDirection, Color.yellow);
         RaycastHit2D _hit;
         _hit = Physics2D.Raycast(transform.position, _targetDirection, _visionRange);
-        //if (Physics.Raycast(transform.position, _target.position, out _hit))
-        //{
         return _hit.collider != null && _hit.collider.transform == _target;
-        //}
-        //return false;
     }
 }
