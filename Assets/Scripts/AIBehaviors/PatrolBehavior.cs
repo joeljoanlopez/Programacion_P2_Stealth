@@ -18,7 +18,7 @@ public class PatrolBehavior : StateMachineBehaviour
         _pathFollower.Move();
 
         animator.SetBool("_isPatrolling", !_pathFollower.ArrivedAtWP());
-        animator.SetBool("_isChasing", _visionDetector.IsPlayerClose(animator.transform));
+        animator.SetBool("_isChasing", _visionDetector.IsTargetClose(animator.transform));
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

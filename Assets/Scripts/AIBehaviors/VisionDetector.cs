@@ -17,9 +17,23 @@ public class VisionDetector : MonoBehaviour
     public Transform Target
     { get { return _target; } }
 
-    public bool IsPlayerClose(Transform transform)
+    public bool IsTargetClose(Transform target)
     {
-        var dist = Vector3.Distance(transform.position, _target.position);
+        var dist = Vector3.Distance(target.position, _target.position);
         return (dist < _visionRange);
+    }
+
+    [SerializeField]
+    public bool IsTargetInAngle(Transform target)
+    {
+        var angle = GetAngle(target);
+        return angle < _visionAngle / 2;
+    }
+
+    private float GetAngle(Transform target)
+    {
+        Vector2 _targetDirection = target.position - transform.position;
+        float angle = Vector2.Angle(_targetDirection, transform.right);
+        return angle;
     }
 }
