@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class GizmoHandler : MonoBehaviour
 {
+    private PathFollower _pathFollower;
     private float _visionRange;
     private float _visionAngle;
-    private PathFollower _pathFollower;
+    private Vector3 _forward;
 
     private void OnDrawGizmos()
     {
@@ -13,7 +14,6 @@ public class GizmoHandler : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, _visionRange);
 
         //Draw Forward Gizmo
-        Vector3 _forward = Vector3.Normalize(_pathFollower.CurrentWP.position - transform.position);
 
         //Draw Angle Gizmo
         Gizmos.color = Color.red;
@@ -34,5 +34,6 @@ public class GizmoHandler : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        _forward = GetComponent<VisionDetector>().Forward;
     }
 }

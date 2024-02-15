@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VisionDetector : MonoBehaviour
@@ -7,8 +5,9 @@ public class VisionDetector : MonoBehaviour
     [SerializeField] private float _visionRange;
     [SerializeField] private float _visionAngle;
     [SerializeField] private Transform _target;
+    private Vector3 _forward;
 
-    [SerializeField] private bool _inAngle;
+    private PathFollower _pathFollower;
 
     public float VisionRange
     { get { return _visionRange; } }
@@ -19,22 +18,35 @@ public class VisionDetector : MonoBehaviour
     public Transform Target
     { get { return _target; } }
 
-    public bool IsTargetClose(Transform target)
+    public Vector3 Forward
+    { get { return _forward; } }
+
+    private void Start()
     {
-        var dist = Vector3.Distance(target.position, _target.position);
+        _pathFollower = GetComponent<PathFollower>();
+    }
+
+    private void Update()
+    {
+        _forward = Vector3.Normalize(_pathFollower.CurrentWP.position - transform.position);
+    }
+
+    public bool IsTargetClose()
+    {
+        var dist = Vector3.Distance(transform.position, _target.position);
         return (dist < _visionRange);
     }
 
-    public bool IsTargetInAngle(Transform target)
+    public bool IsTargetInAngle()
     {
-        var angle = GetAngle(target);
-        return angle < _visionAngle / 2;
+        var angle = GetAngle();
+        return angle < _visionAngle / 2 && angle != 0;
     }
 
-    private float GetAngle(Transform target)
+    private float GetAngle()
     {
-        Vector2 _targetDirection = target.position - transform.position;
-        float angle = Vector2.Angle(_targetDirection, transform.right);
+        Vector2 _targetDirection = _target.position - transform.position;
+        float angle = Vector2.Angle(_forward, _targetDirection);
         return angle;
     }
 }
