@@ -12,12 +12,13 @@ public class ScoreController : MonoBehaviour
     [SerializeField] private TimeController _timeController;
     void Start()
     {
-        _finalScore = _maxScore -_stepController.ReturnSteps() * _timeController.ReturnTime();
     }
 
     // Update is called once per frame
     void Update()
     {
+        _finalScore = _maxScore - _stepController.ReturnSteps() * _timeController.ReturnTime();
+
         if (_finalScore<= 0)
         {
             _finalScore = 0;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StepController : MonoBehaviour
 {
-    public float _steps = 0;
+    public static float _steps = 0;
     private string _stepsText;
     [SerializeField] bool _UIEnabled;
     // Start is called before the first frame update
