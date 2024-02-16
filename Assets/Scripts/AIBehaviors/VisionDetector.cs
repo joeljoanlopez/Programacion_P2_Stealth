@@ -4,7 +4,6 @@ public class VisionDetector : MonoBehaviour
 {
     [SerializeField] private float _visionRange;
     [SerializeField] private float _visionAngle;
-    [SerializeField] private LayerMask _visibleLayers;
     [SerializeField] private Transform _target;
     private Vector3 _forward;
     private Vector3 _targetDirection;
@@ -54,7 +53,6 @@ public class VisionDetector : MonoBehaviour
 
     private bool IsTargetSeeable()
     {
-        Debug.DrawRay(transform.position, _targetDirection, Color.yellow);
         RaycastHit2D _hit;
         _hit = Physics2D.Raycast(transform.position, _targetDirection, _visionRange);
         return _hit.collider != null && _hit.collider.transform == _target;
