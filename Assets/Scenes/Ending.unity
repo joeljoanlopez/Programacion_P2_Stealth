@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1286615666d987b4bb05735c50fb8217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stepController: {fileID: 373089896}
+  _stepHandler: {fileID: 373089896}
   _timeController: {fileID: 1851336882}
 --- !u!1 &373089895
 GameObject:
@@ -202,7 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b6a177a99adfb54a8a74cfb10c36aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _steps: 0
   _UIEnabled: 0
 --- !u!224 &373089897
 RectTransform:
