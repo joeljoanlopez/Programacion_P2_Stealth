@@ -999,6 +999,22 @@ PrefabInstance:
       propertyPath: _waypoints
       value: 
       objectReference: {fileID: 51298634}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_Size.x
+      value: 2.1333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_Size.y
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1374985446, guid: 4d9cf76e192c4704ba87e268f8c1f89a, type: 3}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7907691258368117905, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
       propertyPath: m_Name
       value: Enemy (5)
@@ -1215,6 +1231,22 @@ PrefabInstance:
       propertyPath: _waypoints
       value: 
       objectReference: {fileID: 51298634}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_Size.x
+      value: 2.1333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_Size.y
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1374985446, guid: 4d9cf76e192c4704ba87e268f8c1f89a, type: 3}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7907691258368117905, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
       propertyPath: m_Name
       value: Enemy (2)
@@ -2250,6 +2282,22 @@ PrefabInstance:
       propertyPath: _waypoints
       value: 
       objectReference: {fileID: 1876624335}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_Size.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_Size.y
+      value: 0.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1374985446, guid: 4d9cf76e192c4704ba87e268f8c1f89a, type: 3}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7907691258368117905, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
@@ -3823,6 +3871,22 @@ PrefabInstance:
       propertyPath: _waypoints
       value: 
       objectReference: {fileID: 518080646}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_Size.x
+      value: 2.1333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_Size.y
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1374985446, guid: 4d9cf76e192c4704ba87e268f8c1f89a, type: 3}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7907691258368117905, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
       propertyPath: m_Name
       value: Enemy (4)
@@ -9291,6 +9355,22 @@ PrefabInstance:
       propertyPath: _waypoints
       value: 
       objectReference: {fileID: 683841921}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_Size.x
+      value: 2.1333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_Size.y
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1374985446, guid: 4d9cf76e192c4704ba87e268f8c1f89a, type: 3}
+    - target: {fileID: 7884365736024618789, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7907691258368117905, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
       propertyPath: m_Name
       value: Enemy (3)
