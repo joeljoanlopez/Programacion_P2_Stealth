@@ -14,5 +14,10 @@ public class CameraController : MonoBehaviour
     {
         Vector3 _targetPosition = _target.position + _offset;
         transform.position = Vector3.SmoothDamp(transform.position, _targetPosition, ref _velocity, _smoothTime);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }

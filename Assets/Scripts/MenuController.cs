@@ -15,11 +15,4 @@ public class MenuController : MonoBehaviour
             Application.Quit();
         }
     }
-    private void OnGUI()
-    {
-
-        GUI.Label(new Rect(200, 10, 200, 20), ("Press enter to start"));
-        GUI.Label(new Rect(100, 10, 200, 20), ("Press esc to exit"));
-
-    }
 }
