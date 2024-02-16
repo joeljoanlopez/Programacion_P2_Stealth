@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ScoreController : MonoBehaviour
 
     private float _finalScore = 0;
     private string _grade;
+    static List<string> _scoreBoard;
     [SerializeField] private StepHandler _stepHandler;
     [SerializeField] private TimeController _timeController;
 
@@ -46,10 +48,23 @@ public class ScoreController : MonoBehaviour
         {
             _grade = ("S");
         }
+        _scoreBoard.Add(_finalScore.ToString());
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            SceneManager.LoadScene("GamePlay");
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
     }
 
     private void OnGUI()
     {
         GUI.Label(new Rect(10, 10, 200, 20), ("Grade: ") + _grade + ("   Score: ") + _finalScore);
+        GUI.Label(new Rect(200, 10, 200, 20), ("Press enter to restart"));
+        GUI.Label(new Rect(100, 10, 200, 20), ("Press esc to exit"));
+        
     }
 }
