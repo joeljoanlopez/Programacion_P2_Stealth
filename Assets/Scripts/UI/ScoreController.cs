@@ -10,7 +10,6 @@ public class ScoreController : MonoBehaviour
 
     private float _finalScore = 0;
     private string _grade;
-    static List<string> _scoreBoard;
     [SerializeField] private StepHandler _stepHandler;
     [SerializeField] private TimeController _timeController;
 
@@ -48,7 +47,6 @@ public class ScoreController : MonoBehaviour
         {
             _grade = ("S");
         }
-        _scoreBoard.Add(_finalScore.ToString());
         if (Input.GetKeyDown(KeyCode.Return))
         {
             SceneManager.LoadScene("GamePlay");
