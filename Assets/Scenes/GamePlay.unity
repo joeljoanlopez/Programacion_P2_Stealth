@@ -8565,6 +8565,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2506165532984372955, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6629354156739370433, guid: 8b612b04ddee00a46820c5d48198382e, type: 3}
       propertyPath: _waypoints
       value: 
